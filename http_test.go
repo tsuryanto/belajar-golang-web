@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func HelloHandler(w http.ResponseWriter, r *http.Request) {
@@ -22,7 +24,6 @@ func TestHttp(t *testing.T) {
 	response := recorder.Result()
 	body, _ := io.ReadAll(response.Body)
 
-	bodyString := string(body)
-
-	fmt.Println(bodyString)
+	fmt.Println(string(body))
+	assert.Equal(t, "Hello World", string(body))
 }
