@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }}</title>
+</head>
+<body>
+    <h1>Name : {{ .Name }}</h1>
+
+    {{/* biasanya seperti ini  */}}    
+    {{/* <h1>Address Street : {{ .Address.Street }}</h1>
+    <h1>Address City : {{ .Address.City }}</h1> */}}
+
+    {{/* Cara yg lebih mudah bisa pakai with */}}
+    {{ with .Address }}        
+        <h1>Address Street : {{ .Street }}</h1>
+        <h1>Address Street : {{ .City }}</h1>
+    {{/* Tambahkan else jika data address tidak ditemukan */}}
+    {{ else }}
+        <h1>Address Street : Anda Tidak Punya Alamat
+    {{ end }}
+</body>
+</html>
